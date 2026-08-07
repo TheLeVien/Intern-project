@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
     <link rel="stylesheet" href="../css/signup.css"/>
+    <script type="module" src="../JS/signup.js" defer></script>
 </head>
 <body>
     <header class="app-header">
@@ -40,7 +41,7 @@
                         <label class="form-label" for="fullName">Full Name</label>
                         <div class="input-wrapper">
                             <span class="material-symbols-outlined input-icon">person</span>
-                            <input class="form-input" id="fullName" placeholder="John Doe" type="text"/>
+                            <input class="form-input" id="name" placeholder="John Doe" type="text"/>
                         </div>
                     </div>
 
@@ -73,7 +74,7 @@
                         </span>
                     </label>
 
-                    <button class="btn-primary" type="submit">
+                    <button class="btn-primary" type="submit" id="signup-button">
                         <span class="btn-text">Sign Up</span>
                         <span class="material-symbols-outlined btn-icon">arrow_forward</span>
                         <div class="btn-hover-effect"></div>
