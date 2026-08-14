@@ -10,12 +10,12 @@
 [![Chart.js](https://img.shields.io/badge/Chart.js-4.x-FF6384?logo=chart.js&logoColor=white)](https://www.chartjs.org/)
 [![OSRM](https://img.shields.io/badge/Routing-OSRM-1E88E5)](http://project-osrm.org/)
 [![Firebase](https://img.shields.io/badge/Auth-Firebase-FFCA28?logo=firebase&logoColor=black)](https://firebase.google.com/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](#-giấy-phép)
 [![Status](https://img.shields.io/badge/Status-Đang%20phát%20triển-yellow)](#-lịch-sử-thay-đổi)
 
 </div>
 
 ---
+**Link dẫn đến trang web: https://mappoint-internproject.onrender.com/**
 
 ##  Mục lục
 
