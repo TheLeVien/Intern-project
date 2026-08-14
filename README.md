@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🗺️ Map App User — Ứng dụng Tìm Đường & Tối Ưu Tuyến Đi
+#  Map Point — Ứng dụng Tìm Đường & Tối Ưu Tuyến Đi
 
 **Web app tìm đường, tối ưu thứ tự điểm dừng và so sánh trực quan các thuật toán định tuyến trên bản đồ thật**
 
@@ -17,7 +17,7 @@
 
 ---
 
-## 📌 Mục lục
+##  Mục lục
 
 - [Mô tả dự án](#-mô-tả-dự-án)
 - [Ảnh chụp màn hình & Demo](#-ảnh-chụp-màn-hình--demo)
@@ -32,45 +32,27 @@
 
 ## 📖 Mô tả dự án
 
-**Map App User** là ứng dụng web giúp người dùng chọn nhiều điểm trên bản đồ, sau đó **tự động sắp xếp lại thứ tự đi tối ưu** (bài toán kiểu TSP — Traveling Salesman Problem) để rút ngắn quãng đường/thời gian di chuyển, tương tự tính năng "tối ưu điểm dừng" trên Google Maps.
+**Map Point** là ứng dụng web giúp người dùng chọn nhiều điểm trên bản đồ, sau đó **tự động sắp xếp lại thứ tự đi tối ưu** (bài toán kiểu TSP — Traveling Salesman Problem) để rút ngắn quãng đường/thời gian di chuyển, tương tự tính năng "tối ưu điểm dừng" trên Google Maps.
 
-### 🎯 Mục tiêu
+###  Mục tiêu
 - Giúp người giao hàng, tài xế, người lập kế hoạch di chuyển tiết kiệm thời gian và quãng đường khi phải ghé qua nhiều địa điểm.
 - Trực quan hoá rõ ràng sự khác biệt giữa các thuật toán sắp xếp điểm bằng bản đồ + biểu đồ, thay vì chỉ ra một con số khô khan.
 
 ### ✨ Đặc điểm chính
 | Tính năng | Mô tả |
 |---|---|
-| 🔎 Tìm & thêm điểm | Tìm kiếm địa chỉ (Nominatim) hoặc chọn trực tiếp trên bản đồ |
-| 🧭 Tối ưu tuyến đường | Sắp xếp lại thứ tự điểm bằng **Nearest-Neighbor + 2-opt**, gọi OSRM lấy tuyến đường thật |
-| 🚗 Chọn loại phương tiện | Ô tô / xe máy / xe tải |
-| ⚖️ So sánh thuật toán | So sánh **4 thuật toán** cùng lúc trên bản đồ **và** 2 biểu đồ cột (quãng đường & thời gian) |
-| 🚦 Mô phỏng điểm nghẽn | Tô màu polyline theo mức độ giả lập kẹt xe (xanh/cam/đỏ) + ước tính số phút phát sinh |
-| 🎞️ Mô phỏng xe chạy | Xem trước hành trình bằng marker di chuyển dọc tuyến đường |
-| 🌗 Sáng / Tối | Chuyển giao diện sáng-tối, lưu lựa chọn giữa các lần mở app |
-| 🔐 Tài khoản | Đăng ký / đăng nhập bằng Firebase Authentication, lưu lịch sử vào Firestore |
+|  Tìm & thêm điểm | Tìm kiếm địa chỉ (Nominatim) hoặc chọn trực tiếp trên bản đồ |
+|  Tối ưu tuyến đường | Sắp xếp lại thứ tự điểm bằng **Nearest-Neighbor + 2-opt**, gọi OSRM lấy tuyến đường thật |
+|  Chọn loại phương tiện | Ô tô / xe máy / xe tải |
+|  So sánh thuật toán | So sánh **4 thuật toán** cùng lúc trên bản đồ **và** 2 biểu đồ cột (quãng đường & thời gian) |
+|  Mô phỏng điểm nghẽn | Tô màu polyline theo mức độ giả lập kẹt xe (xanh/cam/đỏ) + ước tính số phút phát sinh |
+|  Mô phỏng xe chạy | Xem trước hành trình bằng marker di chuyển dọc tuyến đường |
+|  Sáng / Tối | Chuyển giao diện sáng-tối, lưu lựa chọn giữa các lần mở app |
+|  Tài khoản | Đăng ký / đăng nhập bằng Firebase Authentication, lưu lịch sử vào Firestore |
 
 ---
 
-## 🖼️ Ảnh chụp màn hình & Demo
-
-> Thư mục đề xuất: `docs/screenshots/` — chèn ảnh/gif/video vào đó rồi tham chiếu như bên dưới.
-
-| Màn hình chính (Sáng) | Màn hình chính (Tối) |
-|---|---|
-| ![Giao diện sáng](docs/screenshots/light-mode.png) | ![Giao diện tối](docs/screenshots/dark-mode.png) |
-
-| So sánh thuật toán | Mô phỏng điểm nghẽn |
-|---|---|
-| ![So sánh thuật toán](docs/screenshots/compare-chart.png) | ![Mô phỏng điểm nghẽn](docs/screenshots/congestion.png) |
-
-**Demo GIF** (thao tác thêm điểm → tối ưu → xem tuyến):
-
-![Demo](docs/screenshots/demo.gif)
-
----
-
-## ⚙️ Hướng dẫn cài đặt
+##  Hướng dẫn cài đặt
 
 ### Yêu cầu hệ thống
 - Python **3.9+**
@@ -105,7 +87,7 @@ Mặc định server chạy tại: **http://localhost:5000**
 
 ---
 
-## 📘 Hướng dẫn sử dụng
+##  Hướng dẫn sử dụng
 
 ### 1. Đăng ký / Đăng nhập
 1. Mở trình duyệt tới `http://localhost:5000`.
@@ -117,7 +99,7 @@ Có 2 cách thêm điểm:
 - **Tìm theo địa chỉ:** gõ tên địa điểm vào ô tìm kiếm (dùng Nominatim), chọn kết quả gợi ý → điểm được thêm vào danh sách.
 - **Chọn trực tiếp trên bản đồ:** bấm/chạm vào vị trí mong muốn trên bản đồ → điểm mới xuất hiện kèm marker.
 
-📌 Lưu ý: **điểm đầu tiên bạn thêm sẽ luôn là điểm xuất phát cố định** (ví dụ: kho hàng, nhà) — hệ thống sẽ không thay đổi vị trí của điểm này khi tối ưu.
+ Lưu ý: **điểm đầu tiên bạn thêm sẽ luôn là điểm xuất phát cố định** (ví dụ: kho hàng, nhà) — hệ thống sẽ không thay đổi vị trí của điểm này khi tối ưu.
 
 Bạn cần **tối thiểu 2 điểm** để có thể tìm đường.
 
@@ -172,7 +154,7 @@ Vào màn hình hồ sơ cá nhân (Profile), bấm **"Log out"** để thoát k
 
 ---
 
-## 📦 Phụ thuộc (Dependencies)
+##  Phụ thuộc (Dependencies)
 
 ### Backend (Python — xem `requirements.txt`)
 | Thư viện | Phiên bản | Mục đích |
@@ -199,7 +181,7 @@ Vào màn hình hồ sơ cá nhân (Profile), bấm **"Log out"** để thoát k
 
 ---
 
-## 📚 Tài liệu tham khảo
+##  Tài liệu tham khảo
 
 - [OSRM API Documentation](http://project-osrm.org/docs/v5.24.0/api/) — chi tiết API `/route`, `/table`.
 - [Leaflet Documentation](https://leafletjs.com/reference.html)
