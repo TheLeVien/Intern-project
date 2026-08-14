@@ -25,20 +25,19 @@
 - [Hướng dẫn sử dụng](#-hướng-dẫn-sử-dụng)
 - [Phụ thuộc (Dependencies)](#-phụ-thuộc-dependencies)
 - [Hỗ trợ](#-hỗ-trợ)
-- [Ghi nhận đóng góp](#-ghi-nhận-đóng-góp)
 - [Tài liệu tham khảo](#-tài-liệu-tham-khảo)
 
 ---
 
-## 📖 Mô tả dự án
+##  Mô tả dự án
 
-**Map Point** là ứng dụng web giúp người dùng chọn nhiều điểm trên bản đồ, sau đó **tự động sắp xếp lại thứ tự đi tối ưu** (bài toán kiểu TSP — Traveling Salesman Problem) để rút ngắn quãng đường/thời gian di chuyển, tương tự tính năng "tối ưu điểm dừng" trên Google Maps.
+**Map Point** là ứng dụng web giúp người dùng chọn nhiều điểm trên bản đồ, sau đó **tự động sắp xếp lại thứ tự đi tối ưu** (bài toán kiểu TSP - Traveling Salesman Problem) để rút ngắn quãng đường/thời gian di chuyển, tương tự tính năng "tối ưu điểm dừng" trên Google Maps.
 
 ###  Mục tiêu
 - Giúp người giao hàng, tài xế, người lập kế hoạch di chuyển tiết kiệm thời gian và quãng đường khi phải ghé qua nhiều địa điểm.
 - Trực quan hoá rõ ràng sự khác biệt giữa các thuật toán sắp xếp điểm bằng bản đồ + biểu đồ, thay vì chỉ ra một con số khô khan.
 
-### ✨ Đặc điểm chính
+###  Đặc điểm chính
 | Tính năng | Mô tả |
 |---|---|
 |  Tìm & thêm điểm | Tìm kiếm địa chỉ (Nominatim) hoặc chọn trực tiếp trên bản đồ |
