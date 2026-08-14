@@ -27,9 +27,6 @@
 - [Hỗ trợ](#-hỗ-trợ)
 - [Ghi nhận đóng góp](#-ghi-nhận-đóng-góp)
 - [Tài liệu tham khảo](#-tài-liệu-tham-khảo)
-- [Giấy phép](#-giấy-phép)
-- [Lịch sử thay đổi](#-lịch-sử-thay-đổi)
-- [Lỗi đã biết](#-lỗi-đã-biết)
 
 ---
 
