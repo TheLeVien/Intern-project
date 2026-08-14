@@ -1,0 +1,1316 @@
+/* --- Root Variables (Color Palette & Fonts) --- */
+:root {
+  --bg-surface: #051424;
+  --bg-surface-dim: #051424;
+  --bg-surface-variant: #273647;
+  --bg-surface-container: #122131;
+  --bg-surface-container-high: #1c2b3c;
+  --bg-surface-container-lowest: #010f1f;
+  
+  --color-primary: #adc6ff;
+  --color-on-primary: #002e6a;
+  --color-primary-container: #4d8eff;
+  --color-on-primary-container: #00285d;
+
+  --color-tertiary: #bcc7de;
+  --color-tertiary-container: #8691a7;
+  --color-on-tertiary-container: #1f2a3c;
+
+  --color-secondary-container: #3f465c;
+  --color-on-secondary-container: #adb4ce;
+
+  --color-error: #ffb4ab;
+  --color-error-container: #93000a;
+  --color-on-error-container: #ffdad6;
+
+  --color-on-surface: #d4e4fa;
+  --color-on-surface-variant: #c2c6d6;
+  --color-outline-variant: #424754;
+
+  /* Lớp nền mờ (header / bottom-nav / sheet) - đổi theo theme */
+  --bg-translucent: rgba(5, 20, 36, 0.8);
+  --bg-translucent-strong: rgba(5, 20, 36, 0.95);
+
+  /* Màu trạng thái dùng chung cho trực quan hoá khoảng cách/thời gian & điểm nghẽn */
+  --status-good: #4caf50;
+  --status-medium: #ffb74d;
+  --status-bad: #ef5b5b;
+
+/* Chế độ tối: làm tối bản đồ*/
+  --map-tile-filter: invert(90%) hue-rotate(200deg) brightness(0.85) contrast(0.9) saturate(1.1);
+
+  /* ============================================================
+     ✏️ TỰ CHỈNH MÀU 2 Ô "KHOẢNG CÁCH" & "THỜI GIAN" TẠI ĐÂY (CHẾ ĐỘ TỐI)
+     Đổi 4 mã màu bên dưới để đổi màu nền/chữ của 2 khối hiển thị
+     khoảng cách và thời gian trong panel "Tìm đường tối ưu".
+     ============================================================ */
+  --distance-badge-bg: #ffb300;
+  --distance-badge-color: #2b1a00;
+  --duration-badge-bg: #29b6f6;
+  --duration-badge-color: #00202b;
+
+  --font-headline: 'Hanken Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* ============================================================
+   CHẾ ĐỘ SÁNG (LIGHT MODE) — bật bằng cách thêm class "light" vào <html>
+   ============================================================ */
+html.light {
+  --bg-surface: #faf6ec;
+  --bg-surface-dim: #f2ead9;
+  --bg-surface-variant: #e9dfc7;
+  --bg-surface-container: #fffdf6;
+  --bg-surface-container-high: #f3ecdc;
+  --bg-surface-container-lowest: #fffdf7;
+
+  --color-primary: #1a73e8;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #1a73e8;
+  --color-on-primary-container: #ffffff;
+
+  --color-tertiary: #6d5a3a;
+  --color-tertiary-container: #e6d9b8;
+  --color-on-tertiary-container: #3a2e18;
+
+  --color-secondary-container: #efe3c8;
+  --color-on-secondary-container: #4a3c1f;
+
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #410002;
+
+  --color-on-surface: #2b2a22;
+  --color-on-surface-variant: #6b6250;
+  --color-outline-variant: #ddd0ac;
+
+  --bg-translucent: rgba(250, 246, 236, 0.85);
+  --bg-translucent-strong: rgba(255, 253, 246, 0.97);
+
+  /* Tile bản đồ light-mode giữ nguyên màu gốc OSM, không đảo màu */
+  --map-tile-filter: none;
+
+  /* ============================================================
+     ✏️ TỰ CHỈNH MÀU 2 Ô "KHOẢNG CÁCH" & "THỜI GIAN" TẠI ĐÂY (CHẾ ĐỘ SÁNG)
+     ============================================================ */
+  --distance-badge-bg: #ffe0a3;
+  --distance-badge-color: #7a4a00;
+  --duration-badge-bg: #bfe4ff;
+  --duration-badge-color: #00456e;
+}
+
+/* --- Base Reset & SPA Viewport Slider --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* QUAN TRỌNG: Rule dưới đây đảm bảo hidden LUÔN ẩn đúng,
+   bất kể phần tử đó có class display gì khác. */
+[hidden] {
+  display: none !important;
+}
+
+html, body {
+  width: 100vw;
+  height: 100dvh;
+  background-color: var(--bg-surface);
+  color: var(--color-on-surface);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 24px;
+  overflow: hidden;
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app-slider {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 200vw;
+  height: 100dvh;
+  transform: translateX(0);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-view {
+  flex: 0 0 100vw;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.material-symbols-outlined {
+  font-size: 20px;
+}
+.icon-active {
+  font-variation-settings: 'FILL' 1;
+}
+
+/* --- Header --- */
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding-top: env(safe-area-inset-top, 0px);
+  background-color: var(--bg-translucent);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+}
+
+.header-content {
+  height: 64px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.app-logo {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
+.app-title {
+  font-family: var(--font-headline);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.avatar-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  cursor: pointer;
+  border: none;
+}
+
+.avatar-icon .material-symbols-outlined {
+  font-size: 18px;
+}
+
+/* --- Main Layout & Map Container --- */
+.main-container {
+  position: relative;
+  width: 100%;
+  height: calc(100dvh - 128px);
+  margin-top: 64px;
+  background-color: var(--bg-surface);
+  overflow: hidden;
+}
+
+.viewport-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.map-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; 
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+.floating-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.leaflet-layer,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out,
+.leaflet-control-attribution {
+  filter: var(--map-tile-filter);
+}
+
+/* --- Search Bar & FABs --- */
+.search-container {
+  padding-top: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  pointer-events: auto;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-surface-container-lowest);
+  border-radius: 9999px;
+  height: 56px;
+  padding: 0 16px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+  border: 1px solid var(--bg-surface-variant);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.search-icon {
+  color: var(--color-on-surface-variant);
+  margin-right: 12px;
+  font-size: 24px;
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--color-on-surface);
+  font-family: var(--font-body);
+  font-size: 16px;
+}
+
+.search-input::placeholder {
+  color: var(--color-on-surface-variant);
+}
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--color-on-surface-variant);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.icon-btn:active {
+  background-color: var(--bg-surface-variant);
+}
+
+.icon-btn .icon-active {
+  color: var(--color-primary);
+}
+
+.divider-vertical {
+  width: 1px;
+  height: 24px;
+  background-color: var(--bg-surface-variant);
+  margin: 0 4px;
+}
+
+.action-buttons {
+  position: absolute;
+  right: 16px;
+  top: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+.fab-btn {
+  width: 44px;
+  height: 44px;
+  background-color: var(--bg-surface-container-lowest);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+  border: 1px solid var(--bg-surface-variant);
+  color: var(--color-on-surface-variant);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.fab-btn:active {
+  background-color: var(--bg-surface-variant);
+}
+
+.fab-btn .icon-active {
+  color: var(--color-primary);
+}
+
+/* --- Left Sidebar Drawers (Sheets) & Right Edge Handle --- */
+.bottom-sheet {
+  position: fixed;
+  top: 64px;
+  bottom: 64px;
+  left: 0;
+  width: 380px;
+  max-width: 90vw;
+  background-color: var(--bg-translucent-strong);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+  box-shadow: 8px 0px 24px rgba(0,0,0,0.3);
+  border-right: 1px solid var(--bg-surface-variant);
+  z-index: 45;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  
+  transform: translateX(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, visibility 0.3s ease, width 0.3s ease;
+}
+
+.bottom-sheet.active {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Khi mở rộng sang phải */
+.bottom-sheet.expanded {
+  width: 560px;
+  max-width: 95vw;
+}
+
+/* Thanh kéo đặt dọc ở cạnh phải của nav-sheet khi được bật */
+.sheet-handle-area,
+.sheet-drag-handle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: ew-resize;
+  z-index: 10;
+}
+
+/* Thanh chỉ báo dạng dọc */
+.sheet-handle-area .handle-bar,
+.sheet-drag-handle .handle-bar {
+  width: 4px;
+  height: 40px;
+  background-color: var(--color-outline-variant);
+  border-radius: 9999px;
+  transition: background-color 0.2s;
+}
+
+.sheet-handle-area:hover .handle-bar,
+.sheet-drag-handle:hover .handle-bar {
+  background-color: var(--color-primary);
+}
+
+.sheet-content {
+  padding: 16px 24px 24px 16px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.saved-sheet {
+  background-color: var(--bg-surface);
+}
+
+.section-title {
+  font-family: var(--font-headline);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  margin-bottom: 16px;
+}
+
+.recents-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-clear {
+  background: transparent;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+.recents-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.recent-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  background-color: var(--bg-surface-container-lowest);
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  border: 1px solid var(--bg-surface-variant);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.recent-card:active {
+  background-color: var(--bg-surface-variant);
+}
+
+.card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--bg-surface-container);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-on-surface-variant);
+}
+
+.card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-title {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--color-on-surface);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-subtitle {
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--color-on-surface-variant);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+.saved-sheet {
+  background-color: var(--bg-surface);
+}
+
+.sheet-drag-handle {
+  width: 100%;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.sheet-header {
+  padding: 0 24px 16px;
+  text-align: left;
+}
+
+.chip-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 8px;
+  padding: 0 16px 16px;
+  scroll-snap-type: x mandatory;
+}
+
+.chip-btn {
+  display: flex; 
+  align-items: center; 
+  gap: 4px; 
+  padding: 8px 16px;
+  border-radius: 9999px; 
+  border: none; 
+  cursor: pointer;
+  background-color: var(--bg-surface-container-high); 
+  color: var(--color-on-surface);
+  white-space: nowrap; 
+  transition: all 0.2s ease;
+}
+
+.chip-btn.active {
+  background-color: var(--color-primary); 
+  color: var(--color-on-primary);
+}
+
+.locations-list { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 16px; 
+  padding: 0 16px; 
+}
+
+.location-card { 
+  display: flex; 
+  gap: 16px; 
+  padding: 8px; 
+  background-color: var(--bg-surface-container); 
+  border-radius: 12px; 
+  position: relative; 
+  border: 1px solid var(--color-outline-variant); 
+}
+
+.card-thumb { 
+  width: 96px; 
+  height: 96px; 
+  border-radius: 8px; 
+  background-size: cover; 
+  background-position: center; 
+  flex-shrink: 0; 
+}
+
+.card-details { 
+  flex: 1; 
+  padding: 4px 40px 4px 0; 
+  min-width: 0; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+}
+
+.card-address { 
+  font-size: 14px; 
+  color: var(--color-on-surface-variant); 
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+}
+
+.card-meta { 
+  margin-top: 8px; 
+  display: flex; 
+  gap: 8px; 
+  align-items: center; 
+}
+
+.badge { 
+  display: inline-flex; 
+  align-items: center; 
+  gap: 4px; 
+  padding: 4px 8px; 
+  border-radius: 6px; 
+  font-size: 12px; 
+}
+
+.badge-visited { 
+  background-color: rgba(63, 70, 92, 0.5); 
+  color: var(--color-on-secondary-container); 
+}
+
+.badge-want { 
+  background-color: var(--bg-surface-container-high); 
+  color: var(--color-on-surface-variant); 
+}
+
+.bookmark-btn { 
+  position: absolute; 
+  top: 12px; 
+  right: 12px; 
+  background: transparent; 
+  border: none; 
+  color: var(--color-primary); 
+  cursor: pointer; 
+}
+
+/* --- Profile Page Styles --- */
+.profile-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 64px;
+  padding-bottom: 96px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.profile-header {
+  position: relative;
+  padding: 24px 16px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-avatar-wrapper {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-surface-container-high);
+  border: 1px solid var(--color-outline-variant);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 8px;
+  z-index: 10;
+}
+
+.profile-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-name {
+  font-family: var(--font-headline);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  color: var(--color-on-surface);
+  margin-bottom: 4px;
+  z-index: 10;
+}
+
+.stats-section {
+  padding: 0 16px;
+  margin-bottom: 24px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 16px;
+  background-color: var(--bg-surface-container-lowest);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--bg-surface-variant);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-border {
+  border-left: 1px solid var(--bg-surface-variant);
+  border-right: 1px solid var(--bg-surface-variant);
+}
+
+.stat-value {
+  font-family: var(--font-headline);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+}
+
+.stat-value.text-primary {
+  color: var(--color-primary);
+}
+
+.stat-value.text-tertiary {
+  color: var(--color-tertiary);
+}
+
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: var(--color-on-surface-variant);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 0 16px;
+}
+
+.sections-container .section-title {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  color: var(--color-on-surface-variant);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  padding-left: 8px;
+}
+
+.timeline-card {
+  background-color: var(--bg-surface-container-lowest);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--bg-surface-variant);
+  overflow: hidden;
+  padding: 16px;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+}
+
+.timeline-item.pb-6 {
+  padding-bottom: 24px;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 20px;
+  top: 40px;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--bg-surface-variant);
+}
+
+.timeline-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-secondary-container);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  position: relative;
+  z-index: 10;
+}
+
+.badge-number {
+  font-family: var(--font-headline);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-on-secondary-container);
+}
+
+.timeline-details {
+  flex: 1;
+  min-width: 0;
+  padding-top: 4px;
+}
+
+.timeline-title {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 500;
+  color: var(--color-on-surface);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.logout-btn {
+  margin-top: 16px;
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  color: var(--color-error);
+  background-color: rgba(147, 0, 10, 0.5);
+  border: 1px solid var(--color-error-container);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.logout-btn:active {
+  background-color: var(--color-error-container);
+}
+
+/* --- Bottom Navigation & Directions Styles --- */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  z-index: 50;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  background-color: var(--bg-translucent);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.04);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  padding: 0 24px;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 64px;
+  text-decoration: none;
+  color: var(--color-on-secondary-container);
+  transition: color 0.2s ease;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  position: relative;
+}
+
+.nav-item.active {
+  color: var(--color-primary);
+}
+
+.nav-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+}
+
+.nav-badge {
+  position: absolute;
+  top: -2px;
+  right: 10px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 9999px;
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: center;
+}
+.nav-badge[hidden] {
+  display: none;
+}
+
+.point-marker-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50% 50% 50% 0;
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  transform: rotate(-45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+  border: 2px solid var(--bg-surface-container-lowest);
+}
+.point-marker-icon span {
+  transform: rotate(45deg);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 12px;
+}
+.points-empty {
+  font-size: 13px;
+  color: var(--color-on-surface-variant);
+  font-style: italic;
+  padding: 4px 2px;
+}
+.point-card__badge {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 14px;
+}
+.point-card__actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+.point-card__move,
+.point-card__remove {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--color-on-surface-variant);
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.2s, color 0.2s;
+}
+.point-card__move:active,
+.point-card__remove:active {
+  background-color: var(--bg-surface-variant);
+}
+.point-card__move:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+.point-card__move .material-symbols-outlined,
+.point-card__remove .material-symbols-outlined {
+  font-size: 18px;
+}
+
+#points-list {
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.btn-optimize {
+  width: 100%;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 48px;
+  border-radius: 12px;
+  border: none;
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.btn-optimize:active {
+  transform: scale(0.98);
+}
+
+.btn-optimize:disabled {
+  background-color: var(--bg-surface-container-high);
+  color: var(--color-on-surface-variant);
+  cursor: default;
+  opacity: 0.6;
+}
+
+.route-status {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--color-on-surface-variant);
+  text-align: center;
+  min-height: 16px;
+}
+
+.route-status--error {
+  color: var(--color-on-error-container);
+}
+
+.route-summary {
+  margin-top: 8px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.route-summary__item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background-color: var(--bg-surface-container);
+  border: 1px solid var(--color-outline-variant);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-on-surface);
+}
+
+.route-summary__item .material-symbols-outlined {
+  font-size: 16px;
+  color: var(--color-primary);
+}
+
+/* ============================================================
+   ✏️ Ô "KHOẢNG CÁCH" & "THỜI GIAN" — MÀU NỔI BẬT, RIÊNG BIỆT
+   Muốn đổi màu 2 ô này: sửa 4 biến --distance-badge-* / --duration-badge-*
+   ở đầu file (mục "CHẾ ĐỘ TỐI" ~dòng 43 và "CHẾ ĐỘ SÁNG" ~dòng 98).
+   Không cần sửa gì trong khối CSS này.
+   ============================================================ */
+.route-summary__item--distance {
+  background-color: var(--distance-badge-bg);
+  border-color: var(--distance-badge-bg);
+  color: var(--distance-badge-color);
+}
+.route-summary__item--distance .material-symbols-outlined {
+  color: var(--distance-badge-color);
+}
+
+.route-summary__item--duration {
+  background-color: var(--duration-badge-bg);
+  border-color: var(--duration-badge-bg);
+  color: var(--duration-badge-color);
+}
+.route-summary__item--duration .material-symbols-outlined {
+  color: var(--duration-badge-color);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.batch-add-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: var(--bg-surface-container-lowest);
+  border: 1px solid var(--bg-surface-variant);
+}
+
+.batch-textarea {
+  width: 100%;
+  min-height: 90px;
+  resize: vertical;
+  background-color: var(--bg-surface-container-high);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: 8px;
+  padding: 10px;
+  color: var(--color-on-surface);
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.5;
+  outline: none;
+}
+
+.batch-textarea:focus {
+  border-color: var(--color-primary);
+}
+
+.btn-optimize--secondary {
+  margin-top: 8px;
+  background-color: var(--bg-surface-container-lowest);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.vehicle-marker-icon {
+  font-size: 22px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+.compare-legend {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.compare-legend__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  background-color: var(--bg-surface-container-lowest);
+  border: 1px solid var(--bg-surface-variant);
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.compare-legend__item--dimmed {
+  opacity: 0.4;
+}
+
+.compare-legend__swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.compare-legend__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.compare-legend__name {
+  font-size: 12.5px;
+  color: var(--color-on-surface);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.compare-legend__best-badge {
+  font-size: 10px;
+  font-weight: 700;
+  color: #1a1a1a;
+  background-color: #4caf50;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.compare-legend__stats {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-on-surface-variant);
+  margin-top: 2px;
+}
+
+.compare-legend__same-as {
+  font-size: 10.5px;
+  color: var(--color-on-surface-variant);
+  font-style: italic;
+  margin-top: 2px;
+}
+
+.hide-scrollbar::-webkit-scrollbar,
+::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ============================================================
+   1. TOGGLE SÁNG / TỐI
+   ============================================================ */
+.header-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.theme-toggle-btn {
+  margin-right: 0;
+}
+.theme-toggle-btn .material-symbols-outlined {
+  transition: transform 0.3s ease;
+}
+.theme-toggle-btn:active .material-symbols-outlined {
+  transform: rotate(25deg);
+}
+
+/* Badge tốc độ trung bình trong route-summary — trực quan hoá khoảng cách/thời gian bằng màu */
+.route-summary__pace {
+  font-weight: 600;
+}
+.route-summary__pace .pace-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-right: 2px;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--pace-color) 20%, transparent);
+  background-color: var(--pace-color);
+}
+
+/* ============================================================
+   2. ĐIỂM NGHẼN (CONGESTION SIMULATION)
+   ============================================================ */
+.congestion-legend {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.congestion-legend__item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--color-on-surface-variant);
+  font-family: var(--font-mono);
+}
+.congestion-legend__swatch {
+  width: 12px;
+  height: 4px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* Dòng hiển thị số phút cộng thêm do đông đúc/tắc nghẽn (giả lập) */
+.congestion-extra-time {
+  margin-top: 6px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--status-medium);
+}
+
+/* ============================================================
+   3. BIỂU ĐỒ SO SÁNH THUẬT TOÁN — 2 biểu đồ cột riêng biệt
+      (Quãng đường & Thời gian), luôn hiển thị cùng lúc.
+   ============================================================ */
+.compare-chart-wrap {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.compare-chart-block {
+  padding: 12px 10px 6px 10px;
+  border-radius: 12px;
+  background-color: var(--bg-surface-container-lowest);
+  border: 1px solid var(--bg-surface-variant);
+}
+.compare-chart-title {
+  margin: 0 0 8px 2px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-on-surface-variant);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.compare-chart-block canvas {
+  width: 100% !important;
+  max-height: 180px;
+}
