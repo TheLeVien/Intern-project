@@ -1,6 +1,6 @@
 <div align="center">
 
-#  Map Point — Ứng dụng Tìm Đường & Tối Ưu Tuyến Đi
+#  Map Point - Ứng dụng Tìm Đường & Tối Ưu Tuyến Đi
 
 **Web app tìm đường, tối ưu thứ tự điểm dừng và so sánh trực quan các thuật toán định tuyến trên bản đồ thật**
 
