@@ -51,41 +51,6 @@
 
 ---
 
-##  Hướng dẫn cài đặt
-
-### Yêu cầu hệ thống
-- Python **3.9+**
-- pip
-- Trình duyệt hiện đại (Chrome, Edge, Firefox...) — cần kết nối Internet để gọi OSRM, Nominatim, CDN Leaflet/Chart.js và Firebase.
-
-### Các bước cài đặt
-
-```bash
-# 1. Clone / giải nén dự án
-git clone <repo-url> map-app-user
-cd map-app-user
-
-# 2. Tạo virtual environment (khuyến khích)
-python -m venv venv
-
-# Kích hoạt venv
-# Windows:
-venv\Scripts\activate
-# macOS/Linux:
-source venv/bin/activate
-
-# 3. Cài thư viện Python
-pip install -r requirements.txt
-
-
-# 5. Chạy server
-python app.py
-```
-
-Mặc định server chạy tại: **http://localhost:5000**
-
----
-
 ##  Hướng dẫn sử dụng
 
 ### 1. Đăng ký / Đăng nhập
