@@ -16,6 +16,7 @@
 
 ---
 **Link dẫn đến trang web: https://mappoint-internproject.onrender.com/**
+**Link video demo: https://canva.link/xwobsvmj187xt8l**
 
 ##  Mục lục
 
