@@ -126,6 +126,7 @@ Vào màn hình hồ sơ cá nhân (Profile), bấm **"Log out"** để thoát k
 |---|---|---|
 | [Flask](https://flask.palletsprojects.com/) | >=3.0.0 | Web server, phục vụ file tĩnh & API |
 | [requests](https://docs.python-requests.org/) | >=2.31.0 | Gọi HTTP tới OSRM API |
+|gunicorn | >=21.2.0 | |
 
 ### Frontend (tải qua CDN, không cần cài đặt)
 | Thư viện | Phiên bản | Mục đích |
