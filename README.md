@@ -55,8 +55,8 @@
 ##  Hướng dẫn sử dụng
 
 ### 1. Đăng ký / Đăng nhập
-1. Mở trình duyệt tới `http://localhost:5000`.
-2. Ở màn hình chào, chọn **Đăng ký** nếu chưa có tài khoản (nhập email + mật khẩu), hoặc **Đăng nhập** nếu đã có.
+1. Mở trình duyệt tới `(https://mappoint-internproject.onrender.com/)`.
+2. Ở màn hình chào, chọn **Sign in (Đăng ký)** nếu chưa có tài khoản (nhập email + mật khẩu), hoặc **Log in (Đăng nhập)** nếu đã có.
 3. Sau khi đăng nhập thành công, bạn được chuyển tới màn hình bản đồ chính.
 
 ### 2. Thêm điểm cần ghé qua
